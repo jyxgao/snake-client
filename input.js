@@ -1,6 +1,8 @@
 const stdin = process.stdin;
 let connection;
 
+const { w, a, s, d, msgObj } = require('./constants');
+
 // handle user input
 const setupInput = function(conn) {
   connection = conn;
@@ -20,24 +22,16 @@ const handleUserInput = function() {
     if(key === '\u0003') {
       process.exit();
     //handling w, a, s, d movements
-    } else if(key === '\u0077') {
+    } else if(key === w) {
       connection.write("Move: up");
-    } else if(key === '\u0061') {
+    } else if(key === a) {
       connection.write("Move: left");
-    } else if(key === '\u0073') {
+    } else if(key === s) {
       connection.write("Move: down");
-    } else if(key === '\u0064') {
+    } else if(key === d) {
       connection.write("Move: right");
-    } else if(key === '\u0031') {
-      connection.write("Say: ohi there");
-    } else if(key === '\u0032') {
-      connection.write("Say: \\(*^ v ^)/");
-    } else if(key === '\u0033') {
-      connection.write("Say: I'm on it <(` v`)>");
-    } else if(key === '\u0034') {
-      connection.write("Say: (/'O`)/*.`");
-    } else if(key === '\u0035') {
-      connection.write("Say: Good to see y'all")
+    } else if (key in msgObj) {
+          connection.write("Say: " + msgObj[key]);
     }
   });
 };
