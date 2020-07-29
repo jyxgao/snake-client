@@ -13,7 +13,14 @@ const connect = function() {
   // send data to server on connection
   conn.on('connect', () => {
     console.log('Successfully connected to game server');
-    conn.write('Name: JG')
+    conn.write("Name: JG");
+  });
+  
+  conn.on('connect', () => {
+    // conn.write("Move: up");
+    setInterval(() => {
+      conn.write("Move: left")
+    }, 50);
   })
 
   // receive data from server on connection
