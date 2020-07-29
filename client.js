@@ -15,11 +15,12 @@ const connect = function() {
     console.log('Successfully connected to game server');
     conn.write("Name: JG");
   });
-  
+
+  // move snake on connection with timeout
   conn.on('connect', () => {
     // conn.write("Move: up");
     setTimeout(() => {
-      conn.write("Move: left")
+      conn.write("Move: up")
     }, 50);
   })
 
@@ -31,4 +32,4 @@ const connect = function() {
   return conn;
 }
 
-module.exports = connect;
+module.exports = { connect };
