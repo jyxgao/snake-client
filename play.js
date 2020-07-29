@@ -11,15 +11,15 @@ const setupInput = function() {
   stdin.resume();
   handleUserInput();
   return stdin;  
-}
+};
 
-// handling Ctrl+C User Input
+// handling Ctrl+C User Input to exit game
 const handleUserInput = function() {
   stdin.on('data', (key) => {
     if(key === '\u0003') {
       process.exit();
     };
   })
-}
+};
 
 setupInput();
